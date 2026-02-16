@@ -19,14 +19,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--primary-grey);
-    background-color: var(--light-grey); /* Grey is now the main background */
+    background-color: var(--light-grey);
     padding: 20px;
 }
 
 .portfolio-container {
     max-width: 1200px;
     margin: 0 auto;
-    background: var(--white); /* White is now the container background */
+    background: var(--white);
     border-radius: 15px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -226,10 +226,15 @@ h2 {
     border-bottom: 1px solid var(--border-grey);
     color: var(--secondary-grey);
     font-size: 0.95rem;
+    transition: color 0.3s;
 }
 
 .skill-list li:last-child {
     border-bottom: none;
+}
+
+.skill-list li:hover {
+    color: #000000 !important;
 }
 
 /* Languages */
@@ -268,7 +273,7 @@ h2 {
     font-size: 0.9rem;
 }
 
-/* Clubs Section */
+/* Clubs Section - CRITICAL FIX FOR HOVER VISIBILITY */
 .clubs-list {
     list-style: none;
 }
@@ -284,12 +289,18 @@ h2 {
     border-left: 3px solid var(--orange);
     transition: all 0.3s;
     border: 1px solid var(--border-grey);
+    color: var(--secondary-grey);
 }
 
 .clubs-list li:hover {
-    background: #f8f8f8;
+    background: #f8f8f8 !important;
     border-left-color: var(--orange-light);
     transform: translateX(5px);
+    color: #000000 !important; /* BLACK TEXT ON HOVER */
+}
+
+.clubs-list li:hover * {
+    color: #000000 !important; /* Ensures all child elements turn black */
 }
 
 .clubs-list li::before {
@@ -297,6 +308,12 @@ h2 {
     color: var(--orange);
     font-size: 1.5rem;
     font-weight: bold;
+    min-width: 15px;
+    text-align: center;
+}
+
+.clubs-list li:hover::before {
+    color: var(--orange) !important; /* Keeps bullet orange on hover */
 }
 
 /* Footer */
@@ -306,6 +323,21 @@ footer {
     text-align: center;
     padding: 20px;
     font-size: 0.9rem;
+}
+
+/* HOVER TEXT VISIBILITY FIXES FOR ALL INTERACTIVE ELEMENTS */
+.education-item:hover,
+.experience-item:hover,
+.skill-category:hover,
+.language-item:hover {
+    color: var(--primary-grey) !important;
+}
+
+.education-item:hover *,
+.experience-item:hover *,
+.skill-category:hover *,
+.language-item:hover * {
+    color: var(--primary-grey) !important;
 }
 
 /* Responsive Design */
